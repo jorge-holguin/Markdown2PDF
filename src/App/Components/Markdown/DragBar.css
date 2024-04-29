@@ -1,0 +1,16 @@
+/* DragBar.css */
+.drag-bar {
+    width: 15px; /* width was a constant in your JS file */
+    flex-shrink: 0;
+    background-color: rgb(233, 233, 233);
+    height: 100%;
+    color: white;
+    text-align: center;
+    cursor: col-resize;
+    user-select: none;
+  }
+  
+  .drag-bar.drag-active {
+    background-color: #0984e3;
+  }
+  

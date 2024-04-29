@@ -1,0 +1,10 @@
+/* MirrorEditor.css */
+.mirror-editor {
+    height: 100%;
+  }
+  
+  .mirror-editor .CodeMirror {
+    height: 100%;
+    line-height: 1.5;
+  }
+  

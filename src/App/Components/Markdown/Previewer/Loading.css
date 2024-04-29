@@ -1,0 +1,29 @@
+/* Loading.css */
+.loading-container {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .loading-container > p {
+    margin: 5px;
+    width: 5px;
+    height: 15px;
+    border-radius: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+    animation-name: load;
+  }
+  
+  @keyframes load {
+    25% {
+      transform: translateY(-10px);
+    }
+    75% {
+      transform: translateY(10px);
+    }
+  }
+  

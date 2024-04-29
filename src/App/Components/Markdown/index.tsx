@@ -1,22 +1,25 @@
-import React, { useState, useRef, useEffect } from 'react';
-import styled from 'styled-components';
-import { useProvided } from 'nonaction';
+import React, { useState, useRef, useEffect, FC } from 'react';
+import './Markdown.css'; // Import the CSS styles
+import { useProvided } from 'nonaction'; // Assume the hook is typed
 import { TextContainer } from '../../Container';
-import Previewer from './Previewer';
-import Editor from './Editor';
-import DragBar from './DragBar.js';
+import Previewer from './Previewer'; // Ensure types are defined for these components
+import Editor from './Editor/Editor';
+import DragBar from './DragBar';
 import 'github-markdown-css';
-import useDrop from '../../Container/Hooks/useDrop.js';
-import uploadFile from '../../Lib/uploadFile.js';
+import useDrop from '../../Container/Hooks/useDrop'; // Assume the hook is typed
+import uploadFile from '../../Lib/uploadFile'; // Assume it's typed
 
-const Markdown = ({ className }) => {
-  const [text, setText] = useProvided(TextContainer);
-  const [isDrag, setDrag] = useState(false);
+interface MarkdownProps {
+  className?: string;
+}
+
+const Markdown: FC<MarkdownProps> = ({ className }) => {
+  const [text, setText] = useProvided<string>(TextContainer);  const [isDrag, setDrag] = useState(false);
   const [startX, setStartX] = useState(0);
   const [width, setWidth] = useState(window.innerWidth / 2);
-  const markdownRef = useRef(null);
-  const [uploading, isOver] = useDrop(markdownRef, uploadFile);
-  // Partial fileText & text
+  const markdownRef = useRef<HTMLDivElement>(null);
+  
+  const [uploading, isOver] = useDrop(markdownRef );
 
   useEffect(() => {
     const handleMouseUp = () => setDrag(false);
@@ -25,8 +28,7 @@ const Markdown = ({ className }) => {
       document.removeEventListener('mouseup', handleMouseUp);
     };
   }, []);
-  // The state `isDrag` must be false, when mouse up!
-  // So we listen it in window! (Seems ugly, but it just works ha.)
+
   return (
     <div
       ref={markdownRef}
@@ -50,10 +52,4 @@ const Markdown = ({ className }) => {
   );
 };
 
-export default styled(Markdown)`
-  * {
-    box-sizing: border-box;
-  }
-  height: calc(100% - 40px);
-  display: flex;
-`;
+export default Markdown;

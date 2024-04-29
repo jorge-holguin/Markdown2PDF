@@ -1,0 +1,8 @@
+/* Editor.css */
+.editor {
+    flex-shrink: 0;
+    height: 100%;
+    width: 50%; /* Considera ajustar esto si necesitas que sea dinámico */
+    color: rgb(204, 204, 204);
+  }
+  
