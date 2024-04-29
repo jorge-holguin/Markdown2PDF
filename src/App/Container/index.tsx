@@ -1,5 +1,11 @@
 import { Container } from 'nonaction';
-import useText from './Hooks/useText';  // Asegúrate de que useText está exportado con TypeScript
+import useText, { TextState } from './Hooks/useText';
 
-// Tipifica lo que devuelve useText para que TypeScript pueda inferir correctamente los tipos
-export const TextContainer = Container(useText);
+const initialState: TextState = {
+    text: "Initial text"
+};
+
+export const TextContainer = new Container<TextState>({
+    initialState: initialState,
+    useHook: useText
+});
